@@ -1,0 +1,32 @@
+{
+	"name": "nodle-vnv-launch",
+	"version": "1.6.1",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"author": "shamb0 <rajesh@nodle.co>",
+	"license": "MIT",
+	"scripts": {
+		"build": "tsc",
+		"clean": "rm -Rf ./dist",
+		"start": "yarn build && node dist/cli.js",
+		"lint": "npx prettier --write ."
+	},
+	"dependencies": {
+		"@polkadot/api": "^4.11.1",
+		"@polkadot/util": "^6.5.1",
+		"@polkadot/util-crypto": "^6.5.1",
+		"filter-console": "^0.1.1",
+		"typescript": "^4.1.5",
+		"yargs": "^15.4.1",
+		"yarn": "^1.22.10"
+	},
+	"files": [
+		"dist"
+	],
+	"bin": {
+		"nodle-vnv-launch": "dist/cli.js"
+	},
+	"devDependencies": {
+		"prettier": "2.2.1"
+	}
+}
