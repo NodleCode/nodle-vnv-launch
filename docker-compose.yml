@@ -2,7 +2,7 @@ version: '3'
 services:
     node_alice:
         image: nodle/chain
-        user: nodle-chain
+        user: nodle-chain:nodle-chain
         ports:
             - "30344:30344"
             - "44190:44190"

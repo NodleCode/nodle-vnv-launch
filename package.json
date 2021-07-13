@@ -10,7 +10,7 @@
 		"clean": "rm -Rf ./dist",
 		"start": "yarn build && node dist/cli.js",
 		"lint": "npx prettier --write .",
-		"docker": "docker-compose rm -f; docker-compose build --no-cache; docker-compose up -d"
+		"docker": "docker-compose rm -f; docker-compose build --no-cache; docker-compose up -d --force-recreate"
 	},
 	"dependencies": {
 		"@polkadot/api": "^4.11.1",
