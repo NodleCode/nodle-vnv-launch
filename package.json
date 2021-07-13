@@ -10,7 +10,7 @@
 		"clean": "rm -Rf ./dist",
 		"start": "yarn build && node dist/cli.js",
 		"lint": "npx prettier --write .",
-		"docker": "docker-compose rm -f; docker-compose build --no-cache; docker-compose up -d --force-recreate"
+		"docker": "docker-compose rm -f; docker-compose build --no-cache; docker-compose up -d --force-recreate --remove-orphans"
 	},
 	"dependencies": {
 		"@polkadot/api": "^4.11.1",
@@ -28,6 +28,7 @@
 		"nodle-vnv-launch": "dist/cli.js"
 	},
 	"devDependencies": {
-		"prettier": "2.2.1"
+		"prettier": "2.2.1",
+		"open-cli": "^7.0.0"
 	}
 }
