@@ -159,6 +159,7 @@
 			"nominations": "OrderedSet",
 			"total": "Balance",
 			"active_bond": "Balance",
+			"frozen_bond": "Balance",
 			"unlocking": "Vec<UnlockChunk>"
 		},
 		"UnappliedSlash": {

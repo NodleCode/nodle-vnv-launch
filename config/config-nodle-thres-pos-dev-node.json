@@ -1,6 +1,6 @@
 {
 	"devchain": {
-		"bin": "./bin/rc208-spec52-nodle-chain-poa",
+		"bin": "./bin/thresh-spec54-nodle-chain-pos",
 		"chain": "local",
 		"nodes": [
 			{

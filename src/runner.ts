@@ -56,18 +56,18 @@ export async function run(config_dir: string, config: LaunchConfig) {
 		}
 		const chain = config.devchain.chain;
 		await generateChainSpec(validator_chain_bin, chain);
-		// -- Start Chain Spec Modify --
-		clearAuthorities(`${chain}.json`);
-		clearNodleStakers(`${chain}.json`);
-		clearStakingInvulnerables(`${chain}.json`);
-		for (const node of config.devchain.nodes) {
-			await addAuthority(`${chain}.json`, node.name);
-			if (node.bond) {
-				await addStakers(`${chain}.json`, node.name, node.bond);
-				await addInvulnerables(`${chain}.json`, node.name);
-			}
-		}
-		// -- End Chain Spec Modify --
+		// // -- Start Chain Spec Modify --
+		// clearAuthorities(`${chain}.json`);
+		// clearNodleStakers(`${chain}.json`);
+		// clearStakingInvulnerables(`${chain}.json`);
+		// for (const node of config.devchain.nodes) {
+		// 	await addAuthority(`${chain}.json`, node.name);
+		// 	if (node.bond) {
+		// 		await addStakers(`${chain}.json`, node.name, node.bond);
+		// 		await addInvulnerables(`${chain}.json`, node.name);
+		// 	}
+		// }
+		// // -- End Chain Spec Modify --
 		await generateChainSpecRaw(validator_chain_bin, chain);
 		const spec = resolve(`${chain}-raw.json`);
 

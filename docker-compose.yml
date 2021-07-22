@@ -8,7 +8,7 @@ services:
             - "44190:44190"
         volumes:
             - "polkadot-data-alice:/alice"
-        command: --chain=local --base-path=/alice --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30344 --ws-port 44190 --rpc-cors all --pruning archive --alice --node-key 721ad2a40449e78581c787b2cff1c3fb2148e0e6b7e083addc6c7634f55aa83e
+        command: --chain=local --base-path=/alice --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30344 --ws-port 44190 --rpc-cors all --pruning archive --alice --db-cache 8192 --node-key 721ad2a40449e78581c787b2cff1c3fb2148e0e6b7e083addc6c7634f55aa83e
         networks:
             testing_net:
                 ipv4_address: 172.28.1.1
@@ -20,8 +20,8 @@ services:
             - "30345:30345"
             - "44192:44192"
         volumes:
-            - "polkadot-data-alice:/alice"
-        command: --chain=local --base-path=/bob --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30345 --ws-port 44192 --rpc-cors all --pruning archive --bob --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+            - "polkadot-data-bob:/bob"
+        command: --chain=local --base-path=/bob --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30345 --ws-port 44192 --rpc-cors all --pruning archive --bob --db-cache 8192 --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
         networks:
             testing_net:
                 ipv4_address: 172.28.1.2
@@ -35,7 +35,7 @@ services:
             - "44204:44204"
         volumes:
             - "polkadot-data-novnv-01:/novnv-01"
-        command: --chain=local --base-path=/novnv-01 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30350 --ws-port 44204 --rpc-cors all --pruning archive --name="novnv-01" --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+        command: --chain=local --base-path=/novnv-01 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30350 --ws-port 44204 --rpc-cors all --pruning archive --name="novnv-01" --db-cache 8192 --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
         networks:
             testing_net:
                 ipv4_address: 172.28.1.3
@@ -48,7 +48,7 @@ services:
             - "44214:44214"
         volumes:
             - "polkadot-data-novnv-02:/novnv-02"
-        command: --chain=local --base-path=/novnv-02 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30351 --ws-port 44214 --rpc-cors all --pruning archive --name="novnv-02" --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+        command: --chain=local --base-path=/novnv-02 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30351 --ws-port 44214 --rpc-cors all --pruning archive --name="novnv-02" --db-cache 8192 --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
         networks:
             testing_net:
                 ipv4_address: 172.28.1.4
@@ -61,7 +61,7 @@ services:
             - "44224:44224"
         volumes:
             - "polkadot-data-novnv-03:/novnv-03"
-        command: --chain=local --base-path=/novnv-03 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30352 --ws-port 44224 --rpc-cors all --pruning archive --name="novnv-03" --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+        command: --chain=local --base-path=/novnv-03 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30352 --ws-port 44224 --rpc-cors all --pruning archive --name="novnv-03" --db-cache 8192 --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
         networks:
             testing_net:
                 ipv4_address: 172.28.1.5
@@ -74,7 +74,7 @@ services:
             - "44234:44234"
         volumes:
             - "polkadot-data-novnv-04:/novnv-04"
-        command: --chain=local --base-path=/novnv-04 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30353 --ws-port 44234 --rpc-cors all --pruning archive --name="novnv-04" --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+        command: --chain=local --base-path=/novnv-04 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30353 --ws-port 44234 --rpc-cors all --pruning archive --name="novnv-04" --db-cache 8192 --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
         networks:
             testing_net:
                 ipv4_address: 172.28.1.6
@@ -87,7 +87,7 @@ services:
             - "44244:44244"
         volumes:
             - "polkadot-data-novnv-05:/novnv-05"
-        command: --chain=local --base-path=/novnv-05 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30354 --ws-port 44244 --rpc-cors all --pruning archive --name="novnv-05" --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+        command: --chain=local --base-path=/novnv-05 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30354 --ws-port 44244 --rpc-cors all --pruning archive --name="novnv-05" --db-cache 8192 --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
         networks:
             testing_net:
                 ipv4_address: 172.28.1.7
@@ -100,7 +100,7 @@ services:
             - "44254:44254"
         volumes:
             - "polkadot-data-novnv-06:/novnv-06"
-        command: --chain=local --base-path=/novnv-06 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30355 --ws-port 44254 --rpc-cors all --pruning archive --name="novnv-06" --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+        command: --chain=local --base-path=/novnv-06 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30355 --ws-port 44254 --rpc-cors all --pruning archive --name="novnv-06" --db-cache 8192 --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
         networks:
             testing_net:
                 ipv4_address: 172.28.1.8
@@ -113,7 +113,7 @@ services:
             - "44264:44264"
         volumes:
             - "polkadot-data-novnv-07:/novnv-07"
-        command: --chain=local --base-path=/novnv-07 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30356 --ws-port 44264 --rpc-cors all --pruning archive --name="novnv-07" --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+        command: --chain=local --base-path=/novnv-07 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30356 --ws-port 44264 --rpc-cors all --pruning archive --name="novnv-07" --db-cache 8192 --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
         networks:
             testing_net:
                 ipv4_address: 172.28.1.9
@@ -126,7 +126,7 @@ services:
             - "44274:44274"
         volumes:
             - "polkadot-data-novnv-08:/novnv-08"
-        command: --chain=local --base-path=/novnv-08 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30357 --ws-port 44274 --rpc-cors all --pruning archive --name="novnv-08" --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+        command: --chain=local --base-path=/novnv-08 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30357 --ws-port 44274 --rpc-cors all --pruning archive --name="novnv-08" --db-cache 8192 --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
         networks:
             testing_net:
                 ipv4_address: 172.28.1.10
@@ -139,7 +139,7 @@ services:
             - "44284:44284"
         volumes:
             - "polkadot-data-novnv-09:/novnv-09"
-        command: --chain=local --base-path=/novnv-09 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30358 --ws-port 44284 --rpc-cors all --pruning archive --name="novnv-09" --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+        command: --chain=local --base-path=/novnv-09 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30358 --ws-port 44284 --rpc-cors all --pruning archive --name="novnv-09" --db-cache 8192 --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
         networks:
             testing_net:
                 ipv4_address: 172.28.1.11
@@ -152,24 +152,84 @@ services:
             - "44294:44294"
         volumes:
             - "polkadot-data-novnv-10:/novnv-10"
-        command: --chain=local --base-path=/novnv-10 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30359 --ws-port 44294 --rpc-cors all --pruning archive --name="novnv-10" --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+        command: --chain=local --base-path=/novnv-10 --validator --unsafe-ws-external --rpc-methods Unsafe --unsafe-rpc-external --port 30359 --ws-port 44294 --rpc-cors all --pruning archive --name="novnv-10" --db-cache 8192 --bootnodes="/ip4/172.28.1.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
         networks:
             testing_net:
                 ipv4_address: 172.28.1.12
 
 volumes:
     polkadot-data-alice:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "/home/kanthasiva/nodle-chain-data/polkadot-data-alice"
     polkadot-data-bob:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "/home/kanthasiva/nodle-chain-data/polkadot-data-bob"
     polkadot-data-novnv-01:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "/home/kanthasiva/nodle-chain-data/polkadot-data-novnv-01"
     polkadot-data-novnv-02:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "/home/kanthasiva/nodle-chain-data/polkadot-data-novnv-02"
     polkadot-data-novnv-03:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "/home/kanthasiva/nodle-chain-data/polkadot-data-novnv-03"
     polkadot-data-novnv-04:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "/home/kanthasiva/nodle-chain-data/polkadot-data-novnv-04"
     polkadot-data-novnv-05:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "/home/kanthasiva/nodle-chain-data/polkadot-data-novnv-05"
     polkadot-data-novnv-06:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "/home/kanthasiva/nodle-chain-data/polkadot-data-novnv-06"
     polkadot-data-novnv-07:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "/home/kanthasiva/nodle-chain-data/polkadot-data-novnv-07"
     polkadot-data-novnv-08:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "/home/kanthasiva/nodle-chain-data/polkadot-data-novnv-08"
     polkadot-data-novnv-09:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "/home/kanthasiva/nodle-chain-data/polkadot-data-novnv-09"
     polkadot-data-novnv-10:
+        driver: local
+        driver_opts:
+            type: none
+            o: bind
+            device: "/home/kanthasiva/nodle-chain-data/polkadot-data-novnv-10"
 
 networks:
     testing_net:

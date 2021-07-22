@@ -1,12 +1,12 @@
 {
-	"devchain": {
-		"bin": "./bin/rc208-spec52-nodle-chain-poa",
+	"validatorchain": {
+		"bin": "./bin/thresh-spec54-nodle-chain-pos",
 		"chain": "local",
 		"nodes": [
 			{
-				"name": "alice",
-				"wsPort": 44190,
-				"port": 30344,
+				"name": "novnv-01",
+				"wsPort": 44204,
+				"port": 30350,
 				"basePath": "./data",
 				"flags": [
 					"--unsafe-ws-external",
@@ -14,21 +14,52 @@
 					"--rpc-methods=Unsafe",
 					"--rpc-cors=all",
 					"--pruning=archive",
-					"-lafg=debug,babe=trace,pallet_nodle_staking=debug"
+					"--validator"
 				],
-				"key": "721ad2a40449e78581c787b2cff1c3fb2148e0e6b7e083addc6c7634f55aa83e"
+				"bootnodes": "/ip4/127.0.0.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
 			},
 			{
-				"name": "bob",
-				"wsPort": 44192,
-				"port": 30345,
+				"name": "novnv-02",
+				"wsPort": 44214,
+				"port": 30351,
 				"basePath": "./data",
 				"flags": [
 					"--unsafe-ws-external",
 					"--unsafe-rpc-external",
 					"--rpc-methods=Unsafe",
 					"--rpc-cors=all",
-					"--pruning=archive"
+					"--pruning=archive",
+					"--validator"
+				],
+				"bootnodes": "/ip4/127.0.0.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+			},
+			{
+				"name": "novnv-03",
+				"wsPort": 44224,
+				"port": 30352,
+				"basePath": "./data",
+				"flags": [
+					"--unsafe-ws-external",
+					"--unsafe-rpc-external",
+					"--rpc-methods=Unsafe",
+					"--rpc-cors=all",
+					"--pruning=archive",
+					"--validator"
+				],
+				"bootnodes": "/ip4/127.0.0.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+			},
+			{
+				"name": "novnv-04",
+				"wsPort": 44234,
+				"port": 30353,
+				"basePath": "./data",
+				"flags": [
+					"--unsafe-ws-external",
+					"--unsafe-rpc-external",
+					"--rpc-methods=Unsafe",
+					"--rpc-cors=all",
+					"--pruning=archive",
+					"--validator"
 				],
 				"bootnodes": "/ip4/127.0.0.1/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
 			}
