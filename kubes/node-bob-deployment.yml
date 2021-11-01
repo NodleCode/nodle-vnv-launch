@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodle-chain-bob
+spec:
+  selector:
+    matchLabels:
+      app: nodle-chain-bob
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nodle-chain-bob
+    spec:
+      containers:
+        - name: nodle-chain-bob
+          image: gcr.io/arcadia-network/nodle-stk-vnv/chain:stk-beta
+          args:
+            - "--chain=local"
+            - "--base-path=/nodle-chain-db"
+            - "--validator"
+            - "--unsafe-ws-external"
+            - "--rpc-methods Unsafe"
+            - "--unsafe-rpc-external"
+            - "--port 30344"
+            - "--ws-port 9944"
+            - "--rpc-cors all"
+            - "--pruning archive"
+            - "--bob"
+            - "--db-cache 8192"
+            - "--bootnodes"
+            - "/dns/nodle-chain-alice/tcp/30344/p2p/12D3KooWJ7UA1uxvVV4V62z6GMMcB5RcLu3BeBvBpxeXX7xEQPYS"
+          ports:
+            - containerPort: 9944
+              name: chain-ws
+            - containerPort: 9615
+              name: chain-metric
+          volumeMounts:
+            - name: db-node-chain
+              mountPath: /nodle-chain-db
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 500m
+              memory: 2500Mi
+      volumes:
+        - name: db-node-chain
+          persistentVolumeClaim:
+            claimName: volume-node-bob
+---
+# node bob volume claim
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: volume-node-bob
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi

@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodle-chain-alice
+spec:
+  selector:
+    matchLabels:
+      app: nodle-chain-alice
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nodle-chain-alice
+    spec:
+      containers:
+        - name: nodle-chain-alice
+          image: gcr.io/arcadia-network/nodle-stk-vnv/chain:stk-beta
+          args:
+            - "--chain=local"
+            - "--base-path=/nodle-chain-db"
+            - "--validator"
+            - "--unsafe-ws-external"
+            - "--rpc-methods Unsafe"
+            - "--unsafe-rpc-external"
+            - "--port 30344"
+            - "--ws-port 9944"
+            - "--rpc-cors all"
+            - "--pruning archive"
+            - "--alice"
+            - "--db-cache 8192"
+            - "--node-key"
+            - "721ad2a40449e78581c787b2cff1c3fb2148e0e6b7e083addc6c7634f55aa83e"
+          ports:
+            - containerPort: 9944
+              name: chain-ws
+            - containerPort: 9615
+              name: chain-metric
+          volumeMounts:
+            - name: db-node-chain
+              mountPath: /nodle-chain-db
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 500m
+              memory: 2500Mi
+      volumes:
+        - name: db-node-chain
+          persistentVolumeClaim:
+            claimName: volume-node-alice
+---
+# node alice volume claim
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: volume-node-alice
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi

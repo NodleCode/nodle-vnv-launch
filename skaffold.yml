@@ -1,0 +1,7 @@
+apiVersion: skaffold/v2beta23
+kind: Config
+
+deploy:
+  kubectl:
+    manifests:
+      - kubes/*.yml
