@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: staking-local-alice
+  labels:
+    app: staking-local-alice
+spec:
+  # type: NodePort
+  type: LoadBalancer
+  ports:
+    - name: chain-ws
+      port: 9944
+      targetPort: chain-ws
+    - name: chain-metric
+      port: 9615
+      targetPort: chain-metric
+  selector:
+    app: staking-local-alice

@@ -1,7 +1,26 @@
 apiVersion: skaffold/v2beta23
 kind: Config
 
-deploy:
-  kubectl:
-    manifests:
-      - kubes/*.yml
+profiles:
+  # Activated if the current kubectl context is minikube, which happens
+  # when you run `bash infra/start-minikube.sh`
+  - name: minikube-staking-local
+    activation:
+      - kubeContext: minikube
+    deploy:
+      kubectl:
+        manifests:
+          - kubes/node-staking-local-alice-deployment.yml
+          - kubes/node-staking-local-alice-service.yml
+          - kubes/node-staking-local-bob-deployment.yml
+          - kubes/node-staking-local-bob-service.yml
+  - name: minikube-main-local
+    activation:
+      - kubeContext: minikube
+    deploy:
+      kubectl:
+        manifests:
+          - kubes/node-main-local-alice-deployment.yml
+          - kubes/node-main-local-alice-service.yml
+          - kubes/node-main-local-bob-deployment.yml
+          - kubes/node-main-local-bob-service.yml

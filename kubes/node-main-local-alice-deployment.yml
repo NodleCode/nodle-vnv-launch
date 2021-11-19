@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nodle-chain-alice
+  name: main-local-alice
 spec:
   selector:
     matchLabels:
-      app: nodle-chain-alice
+      app: main-local-alice
   replicas: 1
   template:
     metadata:
       labels:
-        app: nodle-chain-alice
+        app: main-local-alice
     spec:
       containers:
-        - name: nodle-chain-alice
-          image: gcr.io/arcadia-network/nodle-stk-vnv/chain:stk-beta
+        - name: main-local-alice
+          image: us-docker.pkg.dev/arcadia-network/chain-minions/chain:stk-beta
           args:
             - "--chain=local"
             - "--base-path=/nodle-chain-db"

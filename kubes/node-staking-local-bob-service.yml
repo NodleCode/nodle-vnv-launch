@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodle-chain-bob
+  name: staking-local-bob
   labels:
-    app: nodle-chain-bob
+    app: staking-local-bob
 spec:
   # type: NodePort
   type: LoadBalancer
@@ -15,4 +15,4 @@ spec:
       port: 9615
       targetPort: chain-metric
   selector:
-    app: nodle-chain-bob
+    app: staking-local-bob
