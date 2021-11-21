@@ -2,11 +2,7 @@ apiVersion: skaffold/v2beta23
 kind: Config
 
 profiles:
-  # Activated if the current kubectl context is minikube, which happens
-  # when you run `bash infra/start-minikube.sh`
   - name: minikube-staking-local
-    activation:
-      - kubeContext: minikube
     deploy:
       kubectl:
         manifests:
@@ -15,8 +11,6 @@ profiles:
           - kubes/node-staking-local-bob-deployment.yml
           - kubes/node-staking-local-bob-service.yml
   - name: minikube-main-local
-    activation:
-      - kubeContext: minikube
     deploy:
       kubectl:
         manifests:
